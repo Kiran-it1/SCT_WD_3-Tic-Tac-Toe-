@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic-Tac-Toe — Neon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bgFX"></canvas>
+
+  <div id="app" class="app">
+    <header class="topbar">
+      <button id="btnBack" class="btn ghost hidden" aria-label="Go Back">
+        <span class="icon-chevron">&larr;</span> Back
+      </button>
+      <div class="title">TIC-TAC-TOE</div>
+      <div class="spacer"></div>
+    </header>
+
+    <main class="panel">
+      <section class="step step-welcome active" data-step="welcome">
+        <div class="hero">
+          <div class="logo-grid">
+            <div class="logo xo x"></div>
+            <div class="logo xo o"></div>
+            <div class="logo xo x"></div>
+            <div class="logo xo o"></div>
+            <div class="logo xo x"></div>
+            <div class="logo xo o"></div>
+          </div>
+          <h1 class="neon-h1">Welcome to Tic-Tac-Toe</h1>
+          <p class="sub">Choose your mode, board size, and difficulty. Then play with style.</p>
+          <button id="btnContinue" class="btn primary pulse">Continue</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="mode">
+        <h2 class="neon">Select Mode</h2>
+        <div class="cards">
+          <button class="card white" data-mode="pvp">
+            <div class="card-emoji">👥</div>
+            <div class="card-title white">Player vs Player</div>
+            <div class="card-sub white">Two humans, one board</div>
+          </button>
+          <button class="card white" data-mode="pvc">
+            <div class="card-emoji">🧠</div>
+            <div class="card-title white">Player vs Computer</div>
+            <div class="card-sub white">Adaptive AI</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="step" data-step="size">
+        <h2 class="neon">Choose Board Size</h2>
+        <div class="size-picker grid-2-then-1">
+          <button class="chip white" data-size="3">3 × 3</button>
+          <button class="chip white" data-size="4">4 × 4</button>
+          <button class="chip white span2 center">5 × 5</button>
+        </div>
+        <p class="hint">Win condition equals the board size</p>
+      </section>
+
+      <section class="step" data-step="difficulty">
+        <h2 class="neon">Select Difficulty</h2>
+        <div class="size-note" id="sizeNote"></div>
+        <div class="difficulty grid-2x2">
+          <button class="chip white" data-diff="easy">Easy</button>
+          <button class="chip white" data-diff="medium">Medium</button>
+          <button class="chip white" data-diff="hard">Hard</button>
+          <button class="chip white" data-diff="very-hard">Very Hard</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="game">
+        <div class="hud">
+          <div class="versus">
+            <div class="badge" id="badgeP1">X</div>
+            <div class="vs">vs</div>
+            <div class="badge" id="badgeP2">O</div>
+          </div>
+
+          <div class="status">
+            <div id="turnLabel" class="turn">—</div>
+            <div class="diff-tag" id="diffTag" hidden>Difficulty: —</div>
+          </div>
+
+          <div class="scoreboard">
+            <div class="score">
+              <span class="score-label">X Wins</span>
+              <span class="score-value" id="scoreX">0</span>
+            </div>
+            <div class="score">
+              <span class="score-label">O Wins</span>
+              <span class="score-value" id="scoreO">0</span>
+            </div>
+            <div class="score">
+              <span class="score-label">Draws</span>
+              <span class="score-value" id="scoreD">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="board" class="board"></div>
+
+        <div class="game-actions">
+          <button id="btnHome" class="btn ghost">Home</button>
+          <button id="btnReplay" class="btn secondary">Replay</button>
+          <button id="btnExit" class="btn primary">Exit</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="resultModal" class="modal hidden">
+    <div class="modal-card">
+      <div id="resultIcon" class="result-icon">😐</div>
+      <div id="resultText" class="result-text">DRAW</div>
+      <div class="modal-actions">
+        <button id="modalHome" class="btn primary">Home</button>
+        <button id="modalReplay" class="btn secondary">Replay</button>
+        <button id="modalExit" class="btn ghost">Exit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
